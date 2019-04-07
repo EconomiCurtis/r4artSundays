@@ -24,7 +24,7 @@ Inspired by the book, [Strange Attractors: Creating Patterns in Chaos, by Julien
 [Github repo with more details](https://github.com/aschinchon/general-2D-map)
 
 
-```{r code, message=FALSE, warning=FALSE, error=FALSE, fig.width=8, fig.height=8, dpi=1200}
+```{r code, message=FALSE, warning=FALSE, error=FALSE, fig.width=8, fig.height=8, dpi=600}
 library(Rcpp)
 library(tidyverse)
 
@@ -93,9 +93,9 @@ p1 <- ggplot(df) +
 p1
 ggsave(
   "strange.png", 
-    p1, height = 8, width = 8, units = 'in', dpi = 1200)
+    p1, height = 8, width = 8, units = 'in', dpi = 600)
 
-print(Sys.time() - time_start)
+# (Sys.time() - time_start)
 
 ```
 
@@ -107,7 +107,7 @@ print(Sys.time() - time_start)
 
 cat(
   " Compiled: ",
-  as.character(Sys.time())," GMT,
+  as.character(Sys.Date()),
   sep = ""
 )
 ```
