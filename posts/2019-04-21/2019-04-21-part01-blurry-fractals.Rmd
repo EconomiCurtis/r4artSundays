@@ -24,7 +24,7 @@ Made with [Newton's method and Newton basin fractals](http://web.ncf.ca/fs039/mp
 
 
 
-```{r code, message=FALSE, warning=FALSE, error=FALSE, fig.width=8, fig.height=8, dpi=1200}
+```{r code, message=FALSE, warning=FALSE, error=FALSE, fig.width=8, fig.height=8, dpi=300}
 
 library(ggplot2)
 library(numDeriv)
@@ -55,7 +55,7 @@ grid.arrange(p1, p2, p3, p4, ncol=2)
 ggsave(
   "blurry-fractals.png", 
   grid.arrange(p1, p2, p3, p4, ncol=2), 
-  height = 8, width = 8, units = 'in', dpi = 1200)
+  height = 8, width = 8, units = 'in', dpi = 300)
 
 ```
 
