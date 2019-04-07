@@ -1,2 +1,5 @@
 # r4artSundays
-Sunday Art Made with R
+
+Art Made with R, distributed Sundays. 
+
+
