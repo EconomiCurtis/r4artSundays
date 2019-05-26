@@ -1,7 +1,5 @@
 # r4artSundays
 
 Art Made with R, .. Sundays. 
-
-   
-   
-   sdf
+=======
+Art Made with R, distributed on Sunday. 
