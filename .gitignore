@@ -2,9 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-<<<<<<< HEAD
 .Renviron
-=======
 *.Rproj
 dev/
->>>>>>> 05eeb4821c9ae97a3b64027372859e25d5802545

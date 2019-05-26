@@ -1,5 +1,6 @@
 ---
 title: 'R for Art Sundays'
+date: "2019-04-28"
 output: 
   html_document:
     code_folding: hide
