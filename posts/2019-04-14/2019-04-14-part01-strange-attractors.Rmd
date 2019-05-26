@@ -1,5 +1,6 @@
 ---
-title: '2019-04-13 R for Art Sundays'
+title: 'R for Art Sundays'
+date: "2019-04-13"
 output: 
   html_document:
     code_folding: hide
@@ -24,7 +25,7 @@ Inspired by the book, [Strange Attractors: Creating Patterns in Chaos, by Julien
 [Github repo with more details](https://github.com/aschinchon/general-2D-map)
 
 
-```{r code, message=FALSE, warning=FALSE, error=FALSE, fig.width=8, fig.height=8, dpi=600}
+```{r code, eval=FALSE}
 library(Rcpp)
 library(tidyverse)
 
@@ -91,6 +92,14 @@ p1 <- ggplot(df) +
       opt
 
 p1
+
+
+```
+
+![](strange.png)
+
+
+```{r save, eval=FALSE}
 ggsave(
   "strange.png", 
     p1, height = 8, width = 8, units = 'in', dpi = 600)
