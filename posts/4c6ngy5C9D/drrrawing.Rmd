@@ -1,6 +1,5 @@
 ---
 title: 'R for Art Sundays'
-date: '2019-05-26'
 output: 
   html_document:
     code_folding: hide
@@ -23,7 +22,9 @@ Made with `tidyverse`
 
 
 ```{r code, message=FALSE, warning=FALSE, error=FALSE, fig.width=8, fig.height=8}
+
 library(tidyverse)
+
 # This function creates the segments of the original polygon
 polygon <- function(n) {
   tibble(
@@ -32,6 +33,7 @@ polygon <- function(n) {
     xend = accumulate(2:n,     ~.x+cos(.y*2*pi/n), .init = cos(2*pi/n)),
     yend = accumulate(2:n,     ~.x+sin(.y*2*pi/n), .init = sin(2*pi/n)))
 }
+
 # This function creates segments from some mid-point of the edges
 mid_points <- function(d, p, a, i, FUN = ratio_f) {
   d %>% mutate(
@@ -43,6 +45,7 @@ mid_points <- function(d, p, a, i, FUN = ratio_f) {
     yend=y+radius*sin(angle)) %>% 
     select(x, y, xend, yend)
 }
+
 # This function connect the ending points of mid-segments
 con_points <- function(d) {
   d %>% mutate(
@@ -52,21 +55,24 @@ con_points <- function(d) {
     yend=lead(y, default=first(y))) %>% 
     select(x, y, xend, yend)
 }
+
 edges <- 9   # Number of edges of the original polygon
-niter <- 310 # Number of iterations
-pond <- 0.241  # Weight to calculate the point on the middle of each edge
-step  <- 24  # Number of times to draw mid-segments before connect ending points
-alph  <- 0.2288 # transparency of curves in geom_curve
-angle <- 2.0807 # angle of mid-segment with the edge
-curv <- 0.3584   # Curvature of curves
+niter <- 376 # Number of iterations
+pond <- 0.6667  # Weight to calculate the point on the middle of each edge
+step  <- 22  # Number of times to draw mid-segments before connect ending points
+alph  <- 0.1292 # transparency of curves in geom_curve
+angle <- 3.7115 # angle of mid-segment with the edge
+curv <- 0.0683   # Curvature of curves
 line_color <- "white" # Color of curves in geom_curve
-back_color <- "gray20" # Background of the ggplot
+back_color <- "#cc8f8f" # Background of the ggplot
 ratio_f <- function(x) {log(x+1)} # To calculate the longitude of mid-segments
+
 # Generation on the fly of the dataset
 accumulate(.f = function(old, y) {
   if (y%%step!=0) mid_points(old, pond, angle, y) else con_points(old)
 }, 1:niter,
 .init=polygon(edges)) %>% bind_rows() -> df
+
 # Plot
 ggplot(df)+
   geom_curve(aes(x=x, y=y, xend=xend, yend=yend),
@@ -81,7 +87,9 @@ ggplot(df)+
         panel.grid       = element_blank(),
         axis.title       = element_blank(),
         axis.text        = element_blank()) -> plot
+
 plot
+
 ```
 
 
@@ -90,6 +98,7 @@ plot
 
 
 ```{r, results='asis', echo=FALSE}
+
 cat(
   " Compiled: ",
   as.character(Sys.Date()),
