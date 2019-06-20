@@ -1,0 +1,64 @@
+---
+title: 'R for Art Sundays'
+date: '2019-06-30'
+output: 
+  html_document:
+    code_folding: hide
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+```
+
+# attractor
+
+Made with R, `dplyr`, & `ggplot2`
+
+Repo https://github.com/andrie/attractor
+
+
+
+```{r code, message=FALSE, warning=FALSE, error=FALSE, fig.width=12, fig.height=12}
+
+# install.packages("devtools")
+# devtools::install_github("andrie/attractor")
+
+library(ggplot2)
+library(magrittr)
+library(attractor)
+
+a <- seed_sprott_7e(000429)
+#> setting seed
+
+dat <- 
+  a %>% 
+  attractor_sprott_7e(1e9, dims = c(600, 600))
+# str(dat)
+
+
+
+plot <- dat %>% 
+  recolour(
+    "Oranges", zero_colour = "#000000"
+  )
+
+plot %>% plot
+png("test.png",width=12,height=12,units="in",res=600)
+
+
+```
+
+
+
+-----
+
+
+```{r, results='asis', echo=FALSE}
+
+cat(
+  " Compiled: ",
+  as.character(Sys.Date()),
+  sep = ""
+)
+```
